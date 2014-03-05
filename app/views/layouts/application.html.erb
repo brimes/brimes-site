@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Site</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    Header - 002<br>
-    <%= yield %>
-    <% valor = "ola" %>
-    <script>
-      alert('<%=valor%>');
-    </script>
-  </body>
+<head>
+  <title>Site2</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
 </html>
