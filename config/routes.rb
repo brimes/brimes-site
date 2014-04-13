@@ -1,6 +1,11 @@
 Site2::Application.routes.draw do
   post "api/stop"
   post "api/start"
+  post "api/contas"
+  post "api/beneficiarios"
+  post "api/categorias"
+  post "api/recorrentes"
+  post "api/transacoes"
   get "api/index"
   resources :usuarios
   resources :sincronizacao
