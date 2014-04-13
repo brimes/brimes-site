@@ -1,5 +1,9 @@
 Site2::Application.routes.draw do
+  post "api/stop"
+  post "api/start"
+  get "api/index"
   resources :usuarios
+  resources :sincronizacao
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
