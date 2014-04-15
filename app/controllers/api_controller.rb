@@ -13,18 +13,23 @@ class ApiController < ApplicationController
   end
   
   def contas
-    contas_salvas = Conta.save_dados(params[:contas], @user._id)
+    contas_salvas = Conta.save_dados(params[:dados], @user._id)
     render json: {:status => "OK", :ids => contas_salvas}
   end
 
   def beneficiarios
-    Beneficiario.save_dados(params[:beneficiarios], @user._id)
-    render json: {:status => "OK"}
+    beneficiarios_salvos = Beneficiario.save_dados(params[:dados], @user._id)
+    render json: {:status => "OK", :ids => beneficiarios_salvos}
   end
 
   def categorias
-    Conta.save_dados(params[:contas], @user._id)
-    render json: {:status => "OK"}
+    categorias_salvas = Categoria.save_dados(params[:dados], @user._id)
+    render json: {:status => "OK", :ids => categorias_salvas}
+  end
+
+  def recorrentes
+    recorrentes_salvas = Recorrente.save_dados(params[:dados], @user._id)
+    render json: {:status => "OK", :ids => recorrentes_salvas}
   end
 
   def stop
