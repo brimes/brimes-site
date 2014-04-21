@@ -32,6 +32,11 @@ class ApiController < ApplicationController
     render json: {:status => "OK", :ids => recorrentes_salvas}
   end
 
+  def transacoes
+    transacoes_salvas = Transacao.save_dados(params[:dados], @user._id)
+    render json: {:status => "OK", :ids => transacoes_salvas}
+  end
+
   def stop
     time = Time.new
     @sinc.data_hora_fim = time.strftime("%Y-%m-%d %H:%M:%S")
