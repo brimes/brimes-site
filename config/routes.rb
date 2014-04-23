@@ -1,4 +1,5 @@
 Site2::Application.routes.draw do
+  get "site/index"
   post "api/stop"
   post "api/start"
   post "api/contas"
@@ -6,7 +7,6 @@ Site2::Application.routes.draw do
   post "api/categorias"
   post "api/recorrentes"
   post "api/transacoes"
-  get "api/index"
   resources :usuarios
   resources :sincronizacao
 
@@ -14,7 +14,7 @@ Site2::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'usuarios#index'
+  root 'site#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

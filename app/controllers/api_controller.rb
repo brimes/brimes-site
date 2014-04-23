@@ -2,9 +2,6 @@ class ApiController < ApplicationController
   before_action :validate_api
   skip_before_action :verify_authenticity_token # Permitindo cross-site
   
-  def index
-  end
-  
   def start
     @sinc = Sincronizacao.start(@user._id)
     respond_to do |format|
