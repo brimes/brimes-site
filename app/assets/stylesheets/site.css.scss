@@ -61,7 +61,7 @@ h1,h2,h3,h4 {
 }
 
 header {
-  background: #f16251;
+  background: #BEFAF9;
   color:#000000;
 }
 
@@ -73,7 +73,7 @@ header h1,header h2,header h3 a,header a,header a:hover {
 
 header h3 {
   font-family: 'Kreon', serif;
-  background: #ffcc33;
+  background: #9FA6A6;
   padding:10px;
   border-radius:3px;
   font-size:34px;
@@ -82,7 +82,7 @@ header h3 {
 
 header .dropdown-menu {
   top:74px;
-  background: #ffcc33;
+  background: #9FA6A6;
   border-width:0;
 }
 
@@ -190,7 +190,7 @@ section {
 }
 
 .bg-1 {
-	background: url('http://www.bootply.com/assets/example/bg_4.jpg') no-repeat center center fixed; 
+	background: url('../img/bgApp.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -198,23 +198,24 @@ section {
 }
 
 .bg-2 {
-	background: url('http://www.bootply.com/assets/example/bg_5.jpg') no-repeat center center fixed; 
+	background: url('../img/bg1.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
 }
 
-.bg-3 {
-	background: url('http://www.bootply.com/assets/example/bg_6.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
+.icon-social {
+    background: url('../img/social.png') no-repeat; 
+    width:94px; 
+    height:93px; 
+    display: inline-block; 
+    box-shadow:none!important;
 }
 
-.bg-4 {
-	padding-top:30px;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(20,20,20,0.2)),to(rgba(255,255,255,0)), color-stop(1,#000));
-}
+.icon-social.linkedin{background-position: -395px -15px;}
+.icon-social.facebook{background-position: -12px -15px;}
+.icon-social.twitter{background-position: -140px -15px;}
+.icon-social.google-plus{background-position: -395px -150px;}
+
 
