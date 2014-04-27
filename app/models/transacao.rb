@@ -16,10 +16,16 @@ class Transacao
   field :status, type: Integer
   field :saldo_acumulado, type: Float
   
+  scope :do_usuario, ->(user) { where(:usuario => user) }
+  
   def self.save_dados (j_transacoes, id_usuario)
     transacoes_salvas = [];
     JSON[j_transacoes].each do |o_transacao|
-      transacao = Transacao.new
+      transacao = Transacao.do_usuario(id_usuario).where(:p_id => o_transacao["p_id"]).first()
+      if transacao
+        transacao = Transacao.new
+      end
+
       transacao.usuario = id_usuario
       transacao.attributes = o_transacao;
       if transacao.save
