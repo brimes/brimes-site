@@ -13,7 +13,7 @@ class Beneficiario
     beneficiarios_salvos = [];
     JSON[j_beneficiarios].each do |o_beneficiario|
       beneficiario = Beneficiario.do_usuario(id_usuario).where(:p_id => o_beneficiario["p_id"]).first()
-      if beneficiario
+      if !beneficiario
         beneficiario = Beneficiario.new
       end
       

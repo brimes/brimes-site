@@ -13,7 +13,7 @@ class Categoria
     categorias_salvas = [];
     JSON[j_categorias].each do |o_cat|
       cat = Categoria.do_usuario(id_usuario).where(:p_id => o_cat["p_id"]).first()
-      if cat
+      if !cat
         cat = Categoria.new
       end
 

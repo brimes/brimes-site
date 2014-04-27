@@ -19,7 +19,7 @@ class Recorrente
     recorrentes_salvas = [];
     JSON[j_recorrentes].each do |o_recorrente|
       recorrente = Recorrente.do_usuario(id_usuario).where(:p_id => o_recorrente["p_id"]).first()
-      if recorrente
+      if !recorrente
         recorrente = Recorrente.new
       end
       

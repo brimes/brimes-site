@@ -22,7 +22,7 @@ class Transacao
     transacoes_salvas = [];
     JSON[j_transacoes].each do |o_transacao|
       transacao = Transacao.do_usuario(id_usuario).where(:p_id => o_transacao["p_id"]).first()
-      if transacao
+      if !transacao
         transacao = Transacao.new
       end
 
