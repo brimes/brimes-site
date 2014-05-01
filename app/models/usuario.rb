@@ -8,7 +8,7 @@ class Usuario
     if (self.email == "brunodelima@gmail.com")
       return true
     else
-      return true
+      return false
     end
   end
   

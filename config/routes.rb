@@ -1,4 +1,6 @@
 Site2::Application.routes.draw do
+  get "login" => "usuarios#login", :as => "login"
+  get "register" => "usuarios#login", :as => "register"
   get "site/index"
   post "api/stop"
   post "api/start"
