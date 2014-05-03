@@ -2,7 +2,34 @@ class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   
   def login
+    if request.post?
+      if params[:commit] == "Acessar"
+        user = Usuario.new
+        user.email = params[:email]
+        user.senha = params[:senha]
+        user.api_auth = false
+        if user.validate()
+          session[:user_id] = user._id
+          redirect_to home_path
+        else
+          flash.now[:warning] = "Usuário ou senha inválidos"
+        end
+      else
+        flash.now[:warning] = "Parametros inválidos!"
+      end
+    else
+      if session[:user_id]
+        flash.now[:warning] = "logado"
+      else
+        flash.now[:warning] = "Não logado"
+      end
+    end
     render :action => "login", :layout => "blank"
+  end
+
+  def logout
+    session.destroy
+    redirect_to root_path
   end
 
   def register

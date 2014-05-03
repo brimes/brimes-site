@@ -1,7 +1,14 @@
 Site2::Application.routes.draw do
+  get "home" => "home#index"
+  get "site/index"
+
+  
+  # Usuários
   match "login" => "usuarios#login", :as => "login", via: [:get, :post]
   get "register" => "usuarios#login", :as => "register"
-  get "site/index"
+  get "logout" => "usuarios#logout"
+  
+  #API
   post "api/stop"
   post "api/start"
   post "api/contas"
@@ -15,6 +22,8 @@ Site2::Application.routes.draw do
   post "api/get_categorias"
   post "api/get_recorrentes"
   post "api/get_transacoes"
+  
+  
   resources :usuarios
   resources :sincronizacao
 

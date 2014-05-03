@@ -12,6 +12,10 @@
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 	</head>
 <body>
+  <% flash.each do |name, msg| -%>
+    <%  classes = "alert alert-" << name.to_s %>
+    <%= content_tag :div, msg, class: classes %>
+  <% end -%>
   
   <%= yield %>
   
