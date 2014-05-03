@@ -34,6 +34,47 @@ class ApiController < ApplicationController
     render json: {:status => "OK", :ids => transacoes_salvas}
   end
 
+  def get_contas
+    j_contas = [];
+    Conta.do_usuario(@user._id).each do |conta|
+      j_contas.push(conta)
+    end
+    render json: {:status => "OK", :resp => j_contas}
+  end
+
+  def get_beneficiarios
+    j_dados = [];
+    Beneficiario.do_usuario(@user._id).each do |info|
+      j_dados.push(info)
+    end
+    render json: {:status => "OK", :resp => j_dados}
+  end
+  
+  def get_categorias
+    j_dados = [];
+    Categoria.do_usuario(@user._id).each do |info|
+      j_dados.push(info)
+    end
+    render json: {:status => "OK", :resp => j_dados}
+  end
+  
+  def get_recorrentes
+    j_dados = [];
+    Recorrente.do_usuario(@user._id).each do |info|
+      j_dados.push(info)
+    end
+    render json: {:status => "OK", :resp => j_dados}
+  end
+  
+  def get_transacoes
+    j_dados = [];
+    Transacao.do_usuario(@user._id).each do |info|
+      j_dados.push(info)
+    end
+    render json: {:status => "OK", :resp => j_dados}
+  end
+  
+  
   def stop
     time = Time.new
     @sinc.data_hora_fim = time.strftime("%Y-%m-%d %H:%M:%S")
