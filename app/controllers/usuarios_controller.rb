@@ -11,6 +11,7 @@ class UsuariosController < ApplicationController
         if user.validate()
           session[:user_id] = user._id
           redirect_to home_path
+          return true
         else
           flash.now[:warning] = "Usuário ou senha inválidos"
         end
@@ -19,9 +20,8 @@ class UsuariosController < ApplicationController
       end
     else
       if session[:user_id]
-        flash.now[:warning] = "logado"
-      else
-        flash.now[:warning] = "Não logado"
+        redirect_to home_path
+        return true
       end
     end
     render :action => "login", :layout => "blank"
@@ -36,6 +36,10 @@ class UsuariosController < ApplicationController
     render :action => "login", :layout => "blank"
   end
 
+  def profile
+    
+  end
+  
   # GET /usuarios
   # GET /usuarios.json
   def index

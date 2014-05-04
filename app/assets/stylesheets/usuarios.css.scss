@@ -1,3 +1,24 @@
 // Place all the styles related to the usuarios controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listview {
+    border-top: 1px dotted #fff;
+}
+
+.listview > div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #fff;
+}
+
+
+.listview-label {
+    text-align: right;
+    background-color: #BCD6E0
+}
+
+.listview-info {
+    text-align: left;
+    background-color: #DFF0F7
+}

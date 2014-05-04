@@ -22,6 +22,11 @@ class Usuario
     end
   end
   
+  def email_hash
+    return Digest::MD5.hexdigest(self.email.strip.downcase)
+  end
+  
+  
   def self.load (params)
     return self.find_by(:email => params[:email])
   end

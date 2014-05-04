@@ -7,6 +7,7 @@ Site2::Application.routes.draw do
   match "login" => "usuarios#login", :as => "login", via: [:get, :post]
   get "register" => "usuarios#login", :as => "register"
   get "logout" => "usuarios#logout"
+  get "usuarios/profile"
   
   #API
   post "api/stop"
