@@ -3,6 +3,7 @@ class Usuario
   field :nome, type: String
   field :senha, type: String
   field :email, type: String
+  field :ultimo_acesso, type: String
   
   class_attribute :api_auth
   
@@ -12,6 +13,9 @@ class Usuario
       if !self.api_auth
         if self.senha != user.senha
           return false;
+        else
+          user.ultimo_acesso = Time.new.strftime("%Y-%m-%d %H:%M:%S")
+          user.save()
         end
       end
       self._id = user._id
