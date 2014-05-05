@@ -1,5 +1,4 @@
 <%= javascript_include_tag "profile", "data-turbolinks-track" => true %>
-
 <div class="row">
   <div id="breadcrumb" class="col-md-12">
     <ol class="breadcrumb">
@@ -29,6 +28,11 @@
       <div class="col-sm-3 listview-label">Dispositivos</div>
       <div class="col-sm-9 listview-info">3&nbsp;</div>
 
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modalMudarSenha" id="btnMudarSenha">Mudar a senha</button>
+      </div>
+
     </div>
   </div>
 </div>
+<%= render partial: "mudar_senha" %>

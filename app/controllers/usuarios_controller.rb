@@ -14,10 +14,10 @@ class UsuariosController < ApplicationController
           redirect_to home_path
           return true
         else
-          flash.now[:warning] = "Usuário ou senha inválidos"
+          flash.now[:danger] = "Usuário ou senha inválidos"
         end
       else
-        flash.now[:warning] = "Parametros inválidos!"
+        flash.now[:danger] = "Parametros inválidos!"
       end
     else
       if session[:user_id]

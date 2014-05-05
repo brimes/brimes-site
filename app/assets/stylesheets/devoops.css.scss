@@ -4,6 +4,9 @@ body {
   color: #525252;
   background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
 }
+.body-top-space {
+    padding-top: 10px;
+}
 .body-expanded, .modal-open {
   overflow-y:hidden;
   margin-right: 15px;
@@ -77,7 +80,6 @@ a.show-sidebar:hover {
 }
 #content {
   position: relative;
-  z-index: 10;
   background: #ebebeb;
   box-shadow: 0 0 6px #131313;
   padding-bottom: 3000px !important;
