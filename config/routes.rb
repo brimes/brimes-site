@@ -5,9 +5,12 @@ Site2::Application.routes.draw do
   
   # Usuários
   match "login" => "usuarios#login", :as => "login", via: [:get, :post]
-  get "register" => "usuarios#login", :as => "register"
+  match "register" => "usuarios#register", :as => "register", via: [:get, :post]
   get "logout" => "usuarios#logout"
   get "usuarios/profile"
+  get "usuarios/confirmacao_cadastro"
+  post "usuarios/confirmacao_cadastro"
+  match "mudar_senha_ajax" => "usuarios#mudar_senha_ajax", via: [:post]
   
   #API
   post "api/stop"

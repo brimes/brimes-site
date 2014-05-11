@@ -34,11 +34,63 @@ class UsuariosController < ApplicationController
   end
 
   def register
-    render :action => "login", :layout => "blank"
+    @registrado = false
+    if request.post?
+      status_registro = Usuario.register(params);
+      if status_registro == Usuario::STATUS_JA_CADASTRADO
+        link = view_context.link_to "aqui", login_path
+        flash.now[:info] = "Usuário já cadastrado, para entrar clique #{link}"
+      elsif status_registro == Usuario::STATUS_AGUARDANDO_CONFIRMACAO
+        link = view_context.link_to "aqui", register_path("email" => params[:email])
+        flash.now[:info] = "Já existe uma solicitação para esse usuário. Verifique o seu email. Ou clique #{link} para reenviar o email"
+      elsif status_registro == Usuario::STATUS_ERRO_AO_CADASTRAR
+        flash.now[:danger] = "Erro ao cadastrar usuário"
+      elsif status_registro == Usuario::STATUS_CADASTRADO_COM_SUCESSO
+        user = Usuario.load(params)
+        if user.email_confirmacao_cadastro
+          @registrado = true
+        end
+      end
+    elsif request.get?
+      if params[:email]
+        user = Usuario.load(params)
+        if user.email_confirmacao_cadastro
+          flash.now[:info] = "Email de confirmação de cadastro enviado para o seu email"
+        else
+          flash.now[:warning] = "Não foi possivel enviar o email de confirmação de cadastro. Você não possui confirmação pendente."
+        end
+      end
+    end
+    render :action => "register", :layout => "blank"
+  end
+  
+  def confirmacao_cadastro
+    @dados = {"email" => params[:email], "token" => params[:token]}
+    if request.post?
+      user = Usuario.load({:email => params[:email]})
+      if user.token_email == params[:token]
+        user.senha = params[:senha]
+        user.token_email = nil
+        if user.save
+          session[:user_id] = user._id
+          redirect_to home_path
+          return true
+        else
+          flash.now[:danger] = "Erro ao confirmar usuario. Tente mais tarde."
+        end
+      else
+        flash.now[:danger] = "Token inválido."
+      end
+    end
+    render :action => "confirmacao_cadastro", :layout => "blank"
   end
 
   def profile
     
+  end
+  
+  def mudar_senha_ajax
+    render json: {status: "OK"}
   end
   
   # GET /usuarios

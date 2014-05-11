@@ -17,7 +17,7 @@
         <div class="row">
           <div class="col-xs-12 col-md-12 col-sm-12">
             <%  classes = "alert alert-" << name.to_s %>
-            <%= content_tag :div, msg, class: classes %>
+            <%= content_tag :div, msg, {class: classes}, false %>
             </div>
           </div>
         <% end %>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>DevOOPS</title>
+        <meta name="description" content="description">
+        <meta name="author" content="DevOOPS">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+        <link href="http://www.brimes.com.br/assets/devoops.css?body=1" rel="stylesheet">
+    </head>
+    <body>
+        <!--Start Header-->
+        <header class="navbar">
+            <div class="container-fluid expanded-panel">
+                <div class="row">
+                    <div id="logo" class="col-xs-12 col-sm-2">
+                        <a href="www.brimes.com.br">Brimes</a>
+                    </div>
+                    <div id="top-panel" class="col-xs-12 col-sm-10">
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-4">
+                            </div>
+                            <div class="col-xs-4 col-sm-8 top-panel-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="main" class="container-fluid">
+            <div class="row">
+                <div id="content" class="col-xs-12 col-sm-12">
+                    <br/>
+                    <div class="col-xs-1 col-sm-2 col-lg-2"></div>
+                    <div class="col-xs-10 col-sm-8 well">
+                    <h4>Seja bem vindo.</h4>
+                    <br/>
+                    Você solicitou um cadastro no site www.brimes.com.br. Para confirmar o cadastro clique no botão abaixo para habilitar o seu acesso.<br/>
+                    <br/>
+                    <% link_reg = "#{CONFIG["app_host"]}usuarios/confirmacao_cadastro?email=#{@data['email']}&token=#{@data['token']}"%>
+                    <%= link_to "Confirmar cadastro", link_reg, :class => "btn btn-lg btn-success"%>
+                    <br/><br/>
+                    Caso não tenha solicitado o cadastro desconsidere esse email.
+                    </div>
+                    <div class="col-xs-1 col-sm-2 col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
