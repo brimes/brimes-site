@@ -90,7 +90,11 @@ class UsuariosController < ApplicationController
   end
   
   def mudar_senha_ajax
-    render json: {status: "OK"}
+    if current_user.change_password(params[:senha_atual], params[:nova_senha])
+      render json: {status: "OK"}
+    else
+      render json: {status: "Erro ao mudar senha"}, :status => :unauthorized
+    end
   end
   
   # GET /usuarios
