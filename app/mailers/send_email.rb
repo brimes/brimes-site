@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SendEmail < ActionMailer::Base
   default from: "no-replay@brimes.com.br"
 
