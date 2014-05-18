@@ -1,6 +1,6 @@
 # encoding: utf-8
 class SendEmail < ActionMailer::Base
-  default from: "no-replay@brimes.com.br"
+  default from: "no-reply@brimes.com.br"
 
   def confirmacao_cadastro (user)
     @data = {"email" => user.email, "token" => user.token_email}
