@@ -2,6 +2,9 @@ $(document).ready(function() {
     $('#mudarSenha').click(function () {
         if ($('#nova_senha').val() != $('#confirmacao').val()) {
             alert('A nova senha não está igual a confirmação.');
+            $('#nova_senha').parent().addClass('has_error');
+            $('#confirmacao').parent().addClass('has_error');
+            return ;
         }
         $.ajax({
             type: "post",
@@ -13,6 +16,11 @@ $(document).ready(function() {
             success: function(data) {
                 if (data.status == "OK") {
                     alert('Senha alterada!');
+                    $('#senha_atual').val('');
+                    $('#nova_senha').val('');
+                    $('#confirmacao').val('');
+                    $('#nova_senha').parent().removeClass('has_error');
+                    $('#confirmacao').parent().removeClass('has_error');
                     $('#modalMudarSenha').modal('hide');
                 }
             },
