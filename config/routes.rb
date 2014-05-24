@@ -1,11 +1,13 @@
 Site2::Application.routes.draw do
   get "home" => "home#index"
   get "site/index"
+  get "dispositivos/index"
 
   
   # Usuários
   match "login" => "usuarios#login", :as => "login", via: [:get, :post]
   match "register" => "usuarios#register", :as => "register", via: [:get, :post]
+  match "reset" => "usuarios#reset", :as => "reset", via: [:get, :post]
   get "logout" => "usuarios#logout"
   get "usuarios/profile"
   get "usuarios/confirmacao_cadastro"

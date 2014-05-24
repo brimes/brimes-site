@@ -9,7 +9,7 @@ module ApplicationHelper
     })
     
     itens.push({
-      :path => "/dispositivos",
+      :path => "/dispositivos/index",
       :label => "Dispositivos",
       :icone => "fa fa-mobile",
     })

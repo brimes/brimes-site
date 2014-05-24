@@ -64,6 +64,24 @@ class UsuariosController < ApplicationController
     render :action => "register", :layout => "blank"
   end
   
+  def reset
+    if request.post?
+      resp = Usuario.reset(params[:email]);
+      if resp == Usuario::STATUS_TOKEN_REGERADO
+        user = Usuario.load(params);
+        if user.email_novo_token
+          flash.now[:info] = "Email com a nova senha foi enviado"
+        end
+      elsif resp == Usuario::STATUS_NAO_CADASTRADO
+        link = view_context.link_to "aqui", register_path
+        flash.now[:info] = "Não existe nenhum usuário cadastrado com esse email. Para cadastrar clique #{link}"
+      elsif resp == Usuario::STATUS_ERRO_AO_CADASTRAR
+        flash.now[:danger] = "Erro ao gerar token"
+      end
+    end
+    render :action => "reset", :layout => "blank"
+  end
+  
   def confirmacao_cadastro
     @dados = {"email" => params[:email], "token" => params[:token]}
     if request.post?

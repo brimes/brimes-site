@@ -26,7 +26,7 @@
       <div class="col-sm-9 listview-info"><%=  current_user.ultimo_acesso %>&nbsp;</div>
 
       <div class="col-sm-3 listview-label">Dispositivos</div>
-      <div class="col-sm-9 listview-info">3&nbsp;</div>
+      <div class="col-sm-9 listview-info"><%= current_user.dispositivos.count %></div>
 
       <div class="col-sm-12">
         <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#modalMudarSenha" id="btnMudarSenha">Mudar a senha</button>

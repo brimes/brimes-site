@@ -3,9 +3,11 @@ class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token # Permitindo cross-site
   
   def start
-    @sinc = Sincronizacao.start(@user._id)
-    respond_to do |format|
-      format.json { render action: 'start', location: @sinc }
+    sinc = Sincronizacao.start(@user, params[:device])
+    if sinc[:status] == "OK"
+      render json: {:status => "OK", :id_api => sinc[:id]}
+    else
+      render json: {:status => sinc[:status]}
     end
   end
   

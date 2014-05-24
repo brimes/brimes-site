@@ -6,5 +6,10 @@ class SendEmail < ActionMailer::Base
     @data = {"email" => user.email, "token" => user.token_email}
     mail to: user.email, subject: "[Brimes] - Confirmação de cadastro"
   end  
+
+  def reset_senha (user)
+    @data = {"email" => user.email, "token" => user.token_email}
+    mail to: user.email, subject: "[Brimes] - Solicitação de nova senha"
+  end  
   
 end
