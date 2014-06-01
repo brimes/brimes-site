@@ -6,11 +6,16 @@ class Sincronizacao
   field :usuario, type: Object
   field :uuid, type: String
   field :status, type: String
+  field :app_versao, type: String
   
   def self.start(user, device)
+    if !device[:uuid]
+      return {:status => 'BLOQUEADO'}
+    end
     time = Time.new
     sinc = self.new
     sinc.uuid = device[:uuid]
+    sinc.app_versao = device[:app_versao]
     sinc.data_hora_inicio = time.strftime("%Y-%m-%d %H:%M:%S")
     sinc.usuario = user._id
 

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "dispositivos", "data-turbolinks-track" => true %>
 <div class="row">
   <div id="breadcrumb" class="col-md-12">
     <ol class="breadcrumb">
@@ -14,13 +15,13 @@
       <div class="box card_dispositivo">
         <div class="box-header <%=  dispositivo.status.downcase %>">
           <div class="box-name">
-            <span><%=  dispositivo.status %></span>
+            <span class="labelStatus"><%=  dispositivo.status %></span>
           </div>
           <div class="no-move"></div>
         </div>
         <div class="box-content card_content">
           <div class="card_icon">
-            <i class="fa fa-apple icon_big"></i>
+            <i class="fa <%=DispositivosHelper.get_icon_class(dispositivo)%> icon_big"></i>
           </div>
           <div class="card_info">
             <div class=""><span><%=  dispositivo.platform %> (<%=  dispositivo.versao %>)</span> <span class="pull-right"> <%=  dispositivo.framework %> </span></div>
@@ -30,8 +31,13 @@
             <div class=""><small>Nome</small></div>
             <div class=""><%=  dispositivo.name %></div>
             <br/>
-
-            <button type="button" class="btn btn-default pull-right" data-toggle="modal" id="btnDesbloquear">Desbloquear</button>
+            
+            <% if dispositivo.status != "LIBERADO" %>
+            <% labelButton = 'Desbloquear' %>
+            <%else%>
+            <% labelButton = 'Bloquear' %>
+            <% end %>
+            <button type="button" class="btn btn-default pull-right btnDesbloquear" status="<%=dispositivo.status%>" uuid="<%=dispositivo.uuid%>" data-toggle="modal"><%=labelButton%></button>
 
           </div>
         </div>
@@ -40,3 +46,6 @@
   <% end %>
 </div>
 
+<script>
+  var url_desbloquear = '<%= desbloquear_ajax_path %>';
+</script>

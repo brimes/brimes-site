@@ -2,6 +2,7 @@ Site2::Application.routes.draw do
   get "home" => "home#index"
   get "site/index"
   get "dispositivos/index"
+  match "desbloquear_ajax" => "dispositivos#desbloquear", via: [:post]
 
   
   # Usuários

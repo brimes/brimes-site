@@ -11,4 +11,13 @@ class Dispositivo
   
   embedded_in :usuario
     
+  def unlock(status)
+    if status == "LIBERADO"
+      self.status = "BLOQUEADO"
+    else
+      self.status = "LIBERADO"
+    end
+    return self.save
+  end
+  
 end
