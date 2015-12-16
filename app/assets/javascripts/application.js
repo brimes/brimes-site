@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 
 $(document).ready(function () {
+	$('.show-sidebar').on('click', function (e) {
+        e.stopPropagation();
+		$('#main').toggleClass('sidebar-show');
+		//setTimeout(MessagesMenuWidth, 250);
+	});
     
 });

@@ -6,6 +6,7 @@ class Categoria
   field :total_transacoes, type: Integer
   field :ultima_transacao, type: String
   field :planejado, type: Float
+  field :id_conta, type: Integer
   
   scope :do_usuario, ->(user) { where(:usuario => user) }
   
