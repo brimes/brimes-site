@@ -16,3 +16,4 @@ vendor/*
 /log/*.log
 /tmp
 /nbproject/private/
+.idea/*
