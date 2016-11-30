@@ -5,7 +5,7 @@ gem 'rails', '4.0.2'
 
 gem 'rails_12factor', group: :production
 
-gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
+gem 'mongoid', '~> 5.1.0'
 
 gem 'bson_ext'
 
