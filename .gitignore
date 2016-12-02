@@ -15,5 +15,5 @@ vendor/*
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/nbproject/private/
+nbproject/*
 .idea/*
