@@ -1,0 +1,21 @@
+rails:
+  image: rails
+  container_name: brimes-app
+  command: sh bin/start.sh
+  restart: always
+  working_dir: /usr/src/app
+  ports:
+    - "80:3000"
+  volumes:
+    - ./:/usr/src/app
+  links:
+   - mongo:mongo
+
+mongo:
+  image: ttdev.fidelize.com.br:5000/mongo
+  container_name: mongo-brimes
+  restart: always
+  ports:
+    - "27017:27017"
+  volumes:
+    - ../volumes/mongo:/data/db
